@@ -18,6 +18,7 @@ struct LoginView: View {
     @State private var password = ""
     
     @State private var notEnoughInfo = false
+    @State private var incorrectInfo = false
     
     @State private var presentingMainView = false
     
@@ -66,6 +67,7 @@ struct LoginView: View {
                                             print("Login successful! Token: ")
                                             userToken = token
                                             print(userToken)
+                                            presentingMainView.toggle()
                                             // You can now use the token for further API requests
                                         } else {
                                             print("Login successful but no token received.")
@@ -73,23 +75,29 @@ struct LoginView: View {
                                     } else {
                                         if let message = loginResponse.message {
                                             print("Login failed: \(message)")
+                                            incorrectInfo.toggle()
                                         } else {
                                             print("Login failed with no message.")
+                                            incorrectInfo.toggle()
                                         }
                                     }
                                 case .failure(let error):
                                     print("Error occurred during login: \(error.localizedDescription)")
+                                    incorrectInfo.toggle()
                                 }
                             }
-                            presentingMainView.toggle()
+                            
                         }
-                        // send request and check if valid
-                        
-                        
                     }
+                    // doesnt work idk why
                     .alert(isPresented: $notEnoughInfo) {
                         Alert(title: Text("Ошибка"), message: Text("Вы не ввели все данные!"), dismissButton: .default(Text("OK")) {
-                            notEnoughInfo = false
+                                notEnoughInfo = false
+                        })
+                    }
+                    .alert(isPresented: $incorrectInfo) {
+                        Alert(title: Text("Ошибка"), message: Text("Не удалось войти в вашу учетную запись. Проверьте правильность введенных данных."), dismissButton: .default(Text("OK")) {
+                                incorrectInfo = false
                         })
                     }
                     

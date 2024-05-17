@@ -22,6 +22,7 @@ struct RegistrationView: View {
     @State private var presentingMainView = false
     
     @State private var notEnoughInfo = false
+    @State private var alreadyExists = false
     
     let regService = APIServiceRegister()
     
@@ -80,19 +81,27 @@ struct RegistrationView: View {
                                 case .success(let success):
                                     if Bool(success)! {
                                         print("Registration successful!")
+                                        presentingMainView.toggle()
                                     }
                                 case .failure(let error):
                                     print("Registration failed: \(error.localizedDescription)")
+                                    alreadyExists.toggle()
                                 }
                             }
-                            presentingMainView.toggle()
+                            
                         }
                         // send request and check if valid
                         
                     }
+                    // doesnt work idk why
                     .alert(isPresented: $notEnoughInfo) {
                         Alert(title: Text("Ошибка"), message: Text("Вы не ввели все данные!"), dismissButton: .default(Text("OK")) {
                             notEnoughInfo = false
+                        })
+                    }
+                    .alert(isPresented: $alreadyExists) {
+                        Alert(title: Text("Ошибка"), message: Text("Учетная запись с такими данными уже существует!"), dismissButton: .default(Text("OK")) {
+                            alreadyExists = false
                         })
                     }
                     
@@ -101,7 +110,7 @@ struct RegistrationView: View {
                         MainView()
                     })
                     .frame(maxWidth: .infinity)
-                    Text("Я согласен на обработку персональных данных и прочитал политику конфедициальности")
+                    Text("Я согласен на обработку персональных данных и прочитал политику конфедициальности.")
                     .font(.system(size: 16, weight: .ultraLight))
                     .accentColor(.blue)
                     
