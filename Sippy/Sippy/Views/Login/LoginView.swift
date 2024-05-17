@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email = ""
+    
+    @State var loginService = APIServiceLogin()
+    @State var userToken: String = ""
+    
+    @Environment(\.presentationMode) var presentationMode
+
+    @State private var name = ""
     @State private var password = ""
     
-    @State private var showAlert = false
+    @State private var notEnoughInfo = false
     
     @State private var presentingMainView = false
     
@@ -29,7 +35,7 @@ struct LoginView: View {
                     Form {
                         HStack {
                             Text("Никнейм: ")
-                            TextField("example", text: $email)
+                            TextField("example", text: $name)
                                 .keyboardType(.emailAddress)
                                 .multilineTextAlignment(.trailing)
                         }
@@ -48,17 +54,42 @@ struct LoginView: View {
                 
                 VStack {
                     Button("Войти") {
-                        if email == "" || password == "" {
-                            showAlert = true
+                        if name.isEmpty || password.isEmpty {
+                            notEnoughInfo = true
                             
+                        } else {
+                            loginService.login(name: name, password: password) { result in
+                                switch result {
+                                case .success(let loginResponse):
+                                    if loginResponse.success {
+                                        if let token = loginResponse.token {
+                                            print("Login successful! Token: ")
+                                            userToken = token
+                                            print(userToken)
+                                            // You can now use the token for further API requests
+                                        } else {
+                                            print("Login successful but no token received.")
+                                        }
+                                    } else {
+                                        if let message = loginResponse.message {
+                                            print("Login failed: \(message)")
+                                        } else {
+                                            print("Login failed with no message.")
+                                        }
+                                    }
+                                case .failure(let error):
+                                    print("Error occurred during login: \(error.localizedDescription)")
+                                }
+                            }
+                            presentingMainView.toggle()
                         }
                         // send request and check if valid
-                        // presentingMainView.toggle()
+                        
                         
                     }
-                    .alert(isPresented: $showAlert) {
+                    .alert(isPresented: $notEnoughInfo) {
                         Alert(title: Text("Ошибка"), message: Text("Вы не ввели все данные!"), dismissButton: .default(Text("OK")) {
-                            showAlert = false
+                            notEnoughInfo = false
                         })
                     }
                     
@@ -85,6 +116,7 @@ struct LoginView: View {
                     .sheet(isPresented: $presentingRegView, content: {
                         RegistrationView()
                     })
+                    
                     
                 }
                 Spacer()
