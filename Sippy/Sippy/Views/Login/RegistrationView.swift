@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct RegistrationView: View {
     @State private var name = ""
     @State private var gender: Int = 0
@@ -37,7 +39,7 @@ struct RegistrationView: View {
                 Form {
                     Section("Ваши данные") {
                         HStack {
-                            Text("Ваш никнейм: ")
+                            Text("Никнейм: ")
                             TextField("username", text: $name)
                                 .multilineTextAlignment(.trailing)
                         }
@@ -49,7 +51,7 @@ struct RegistrationView: View {
                             }
                         }
                         HStack {
-                            Text("Ваш возраст: ")
+                            Text("Возраст: ")
                             TextField("18", text: $ageString)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
