@@ -29,13 +29,15 @@ struct LoginView: View {
                     Form {
                         HStack {
                             Text("Никнейм: ")
-                            TextField("example@mail,com", text: $email)
+                            TextField("example", text: $email)
                                 .keyboardType(.emailAddress)
+                                .multilineTextAlignment(.trailing)
                         }
                         
                         HStack {
                             Text("Пароль: ")
                             SecureField("******", text: $password)
+                                .multilineTextAlignment(.trailing)
                         }
                     }
                     .frame(maxHeight: 150)
