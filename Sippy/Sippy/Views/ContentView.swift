@@ -19,19 +19,7 @@ struct ContentView: View {
     
 
     var body: some View {
-        TabView {
-            MapView()
-            .tabItem {
-                Label("Map", systemImage: "map")
-            }
-            
-            
-            
-            ProfileView()
-            .tabItem {
-                Label("Profile", systemImage: "person.fill")
-            }
-        }
+        LoginView()
         
         
     }
