@@ -27,6 +27,7 @@ struct RegistrationView: View {
                         HStack {
                             Text("Ваш никнейм: ")
                             TextField("username", text: $name)
+                                .multilineTextAlignment(.trailing)
                         }
                         HStack {
                             Text("Пол: ")
@@ -39,10 +40,12 @@ struct RegistrationView: View {
                             Text("Email: ")
                             TextField("example@mail", text: $email)
                                 .keyboardType(.emailAddress)
+                                .multilineTextAlignment(.trailing)
                         }
                         HStack {
                             Text("Пароль: ")
                             SecureField("******", text: $password)
+                                .multilineTextAlignment(.trailing)
                         }
                         
                         
