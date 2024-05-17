@@ -12,10 +12,10 @@ struct StartView: View {
     @State private var password = ""
     
     var body: some View {
-        ZStack {
+        Section {
             
             VStack {
-                Text("Login")
+                Text("Войти в Sippy")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 Form {
@@ -31,6 +31,8 @@ struct StartView: View {
                     }
                     
                     Section {
+                        
+                        
                         Button("Войти") {
                             // send request and check if valid
                         }
@@ -40,6 +42,7 @@ struct StartView: View {
                         }
                         .font(.system(size: 16, weight: .thin))
                         .frame(maxWidth: .infinity)
+                        .accentColor(.blue)
                     }
                     
                 }
