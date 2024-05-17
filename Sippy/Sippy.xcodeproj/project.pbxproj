@@ -18,7 +18,10 @@
 		2C6CA83A2BF750370055002E /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8392BF750370055002E /* HexColor.swift */; };
 		2C6CA83D2BF751400055002E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA83C2BF751400055002E /* APIService.swift */; };
 		2C6CA83F2BF751480055002E /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA83E2BF751480055002E /* WebSocketService.swift */; };
-		2C6CA8442BF753460055002E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CA8432BF753460055002E /* LaunchScreen.storyboard */; };
+		2CA7C0E52BF7974C001D70D3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0E42BF7974C001D70D3 /* MainView.swift */; };
+		2CA7C0E82BF7983C001D70D3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0E72BF7983C001D70D3 /* LoginView.swift */; };
+		2CA7C0EB2BF79F4E001D70D3 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */; };
+		2CFD99962BF7B3B000BC4F63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +37,10 @@
 		2C6CA8392BF750370055002E /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		2C6CA83C2BF751400055002E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		2C6CA83E2BF751480055002E /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
-		2C6CA8432BF753460055002E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2CA7C0E42BF7974C001D70D3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		2CA7C0E72BF7983C001D70D3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				2C6CA8222BF74DE90055002E /* ContentView.swift */,
-				2C6CA8302BF74EEA0055002E /* MapView.swift */,
-				2C6CA8332BF74FB10055002E /* EditView.swift */,
-				2C6CA8362BF74FF20055002E /* ProfileView.swift */,
+				2CA7C0E92BF79846001D70D3 /* Main */,
+				2CA7C0E62BF7982A001D70D3 /* Login */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,9 +131,29 @@
 		2C6CA8402BF752A00055002E /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2C6CA8432BF753460055002E /* LaunchScreen.storyboard */,
+				2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */,
 			);
 			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		2CA7C0E62BF7982A001D70D3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2CA7C0E72BF7983C001D70D3 /* LoginView.swift */,
+				2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2CA7C0E92BF79846001D70D3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2CA7C0E42BF7974C001D70D3 /* MainView.swift */,
+				2C6CA8362BF74FF20055002E /* ProfileView.swift */,
+				2C6CA8302BF74EEA0055002E /* MapView.swift */,
+				2C6CA8332BF74FB10055002E /* EditView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6CA8442BF753460055002E /* LaunchScreen.storyboard in Resources */,
+				2CFD99962BF7B3B000BC4F63 /* Launch Screen.storyboard in Resources */,
 				2C6CA82A2BF74DEB0055002E /* Preview Assets.xcassets in Resources */,
 				2C6CA8272BF74DEB0055002E /* Assets.xcassets in Resources */,
 			);
@@ -203,8 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6CA83A2BF750370055002E /* HexColor.swift in Sources */,
+				2CA7C0E82BF7983C001D70D3 /* LoginView.swift in Sources */,
 				2C6CA8232BF74DE90055002E /* ContentView.swift in Sources */,
+				2CA7C0EB2BF79F4E001D70D3 /* RegistrationView.swift in Sources */,
 				2C6CA8342BF74FB10055002E /* EditView.swift in Sources */,
+				2CA7C0E52BF7974C001D70D3 /* MainView.swift in Sources */,
 				2C6CA8312BF74EEA0055002E /* MapView.swift in Sources */,
 				2C6CA8252BF74DE90055002E /* Item.swift in Sources */,
 				2C6CA8372BF74FF20055002E /* ProfileView.swift in Sources */,
@@ -347,11 +375,12 @@
 				DEVELOPMENT_TEAM = 8H5A2XU4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -381,11 +410,12 @@
 				DEVELOPMENT_TEAM = 8H5A2XU4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
