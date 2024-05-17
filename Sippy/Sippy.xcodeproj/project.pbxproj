@@ -41,6 +41,7 @@
 		2CA7C0E72BF7983C001D70D3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2CFD99972BF7C89E00BC4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,11 +74,12 @@
 		2C6CA81F2BF74DE90055002E /* Sippy */ = {
 			isa = PBXGroup;
 			children = (
+				2CFD99972BF7C89E00BC4F63 /* Info.plist */,
 				2C6CA8402BF752A00055002E /* SplashScreen */,
 				2C6CA8352BF74FC30055002E /* Model */,
-				2C6CA8202BF74DE90055002E /* SippyApp.swift */,
 				2C6CA8322BF74F1E0055002E /* Views */,
 				2C6CA8242BF74DE90055002E /* Item.swift */,
+				2C6CA8202BF74DE90055002E /* SippyApp.swift */,
 				2C6CA8262BF74DEB0055002E /* Assets.xcassets */,
 				2C6CA8282BF74DEB0055002E /* Preview Content */,
 			);
@@ -375,6 +377,7 @@
 				DEVELOPMENT_TEAM = 8H5A2XU4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sippy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -410,6 +413,7 @@
 				DEVELOPMENT_TEAM = 8H5A2XU4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sippy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
