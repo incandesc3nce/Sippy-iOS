@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
     
@@ -19,7 +18,12 @@ struct ContentView: View {
     
 
     var body: some View {
-        LoginView()
+        if let isLoggedIn = UserDefaults.standard.string(forKey: "loggedIn") {
+            MainView()
+        } else {
+            LoginView()
+        }
+        
         
         
     }
@@ -29,5 +33,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
