@@ -11,14 +11,15 @@ class APIServiceRegister: ObservableObject {
     var decodedAnswer: String = ""
     
     func register(name: String, email: String, password: String, gender: Int, age: Int?, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let url = URL(string: "http://79.174.80.34:8081/api/registration") else {
+        guard let url = URL(string: "http://79.174.80.34:8081/api/registration/") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         var parameters: [String: Any] = [
             "name": name,
@@ -54,14 +55,8 @@ class APIServiceRegister: ObservableObject {
                 completion(.success("true"))
             } else {
                 print("HTTP Status Code: \(httpResponse.statusCode)")
-                
-                if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    print("Response Body: \(responseString)")
-                }
-                
-                let statusCodeError = NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)
-                completion(.failure(statusCodeError))
-            }
+                completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
+        }
         }
 
         task.resume()
@@ -71,10 +66,6 @@ class APIServiceRegister: ObservableObject {
     
 }
 
-
-
-import Foundation
-
 // Define a struct for the login response.
 struct LoginResponse: Codable {
     let success: Bool
@@ -83,12 +74,11 @@ struct LoginResponse: Codable {
 }
 
 class APIServiceLogin {
-    var userToken: String = ""
     
     // The login function takes name and password, sends a POST request, and returns the decoded response.
     func login(name: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
         // Ensure the URL is valid.
-        guard let url = URL(string: "http://79.174.80.34:8081/api/login") else {
+        guard let url = URL(string: "http://79.174.80.34:8081/api/login/") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
@@ -96,7 +86,8 @@ class APIServiceLogin {
         // Create the request.
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         // Create the JSON payload.
         let loginData = ["name": name, "password": password]
@@ -117,8 +108,6 @@ class APIServiceLogin {
                 return
             }
             
-            
-            
             // Ensure the response is an HTTP response.
             guard let httpResponse = response as? HTTPURLResponse else {
                 let invalidResponseError = NSError(domain: "Invalid response", code: -1, userInfo: nil)
@@ -134,28 +123,23 @@ class APIServiceLogin {
                 return
             }
             
-            
             // Ensure there is data in the response.
             guard let data = data else {
                 let noDataError = NSError(domain: "No data", code: -1, userInfo: nil)
                 completion(.failure(noDataError))
                 return
             }
-
-            let responseDataString = String(decoding: data, as: UTF8.self)
-            if !responseDataString.isEmpty {
-                var token = LoginResponse(success: true, token: responseDataString, message: "Success")
-                completion(.success(token))
-            }
             
-            // Decode the JSON response.
-            /*do {
-                let decodedResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                print(decodedResponse)
-                completion(.success(decodedResponse))
-            } catch {
-                completion(.failure(error))
-            }*/
+
+            if let decodedString = String(data: data, encoding: .utf8) {
+                userToken = decodedString
+                print(decodedString)
+                let loginResponse = LoginResponse(success: true, token: userToken, message: nil)
+                completion(.success(loginResponse))
+            } else {
+                let decodeError = NSError(domain: "Decoding error", code: -1, userInfo: nil)
+                completion(.failure(decodeError))
+            }
         }
         
         // Start the data task.

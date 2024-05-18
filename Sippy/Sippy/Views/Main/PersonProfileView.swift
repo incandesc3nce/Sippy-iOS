@@ -18,7 +18,7 @@ struct PersonProfileView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("Logo_v2")
+                Image("mr cat")
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

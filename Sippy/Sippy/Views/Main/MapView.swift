@@ -14,6 +14,7 @@ struct Location: Codable, Equatable, Identifiable {
     var id: UUID
     var name: String
     var description: String
+    var typeOfEvent: Int
     var latitude: Double
     var longitude: Double
     
@@ -26,8 +27,9 @@ struct Location: Codable, Equatable, Identifiable {
     }
 }
 
-
-
+// token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.FmlgL5f2FlT2ty8hRdQgxmJD6vG2gspgbTHLS_ecZTY
+// ios_test
+// testtest
 
 
 struct MapView: View {
@@ -60,7 +62,7 @@ struct MapView: View {
                     initialPosition: initialPosition
                 ) {
                     ForEach(locations) { location in
-                        Annotation(location.name, coordinate: location.coordinate) {
+                        Annotation("", coordinate: location.coordinate) {
                             Image(systemName: "mappin.and.ellipse")
                                 .resizable()
                                 .foregroundColor(.red)
@@ -82,7 +84,7 @@ struct MapView: View {
                 .onTapGesture { position in
                     if let coordinate = proxy.convert(position, from: .local) {
                     
-                        tempLocation = Location(id: UUID(), name: "", description: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        tempLocation = Location(id: UUID(), name: "", description: "", typeOfEvent: 0, latitude: coordinate.latitude, longitude: coordinate.longitude)
                         isCreatingPlace = true
                     }
                 }
@@ -116,7 +118,7 @@ struct MapView: View {
                             Image(systemName: "xmark.circle.fill")
                                 .resizable()
                                 .foregroundColor(.orange)
-                                .background(.black)
+                                .background(.white)
                                 .clipShape(Circle())
                                 .frame(width: 50, height: 50)
                         })
@@ -148,7 +150,7 @@ struct MapView: View {
                         isCreatingPlace = false
                     }, label: {
                         Text("Создать точку")
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .font(.headline)
                             .padding()
                     })

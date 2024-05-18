@@ -12,15 +12,15 @@ struct UserInfo {
     var password: String = ""
     var email: String = ""
     
-    var gender: Int = 0
+    var gender: Int = 1
     var age: Int = 0
     
     var bio: String = ""
     
-    var token: String = ""
+    
 }
 
 var loggedIn = false
-
+var userToken: String = ""
 
 var localUser = UserInfo()
