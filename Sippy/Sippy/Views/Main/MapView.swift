@@ -14,7 +14,7 @@ struct Location: Codable, Equatable, Identifiable {
     var id: UUID
     var name: String
     var description: String
-    var typeOfEvent: Int
+    var category: String
     var latitude: Double
     var longitude: Double
     
@@ -129,7 +129,7 @@ struct MapView: View {
                 .onTapGesture { position in
                     if let coordinate = proxy.convert(position, from: .local) {
                     
-                        tempLocation = Location(id: UUID(), name: "", description: "", typeOfEvent: 0, latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        tempLocation = Location(id: UUID(), name: "", description: "", category: "pubs", latitude: coordinate.latitude, longitude: coordinate.longitude)
                         isCreatingPlace = true
                     }
                 }
