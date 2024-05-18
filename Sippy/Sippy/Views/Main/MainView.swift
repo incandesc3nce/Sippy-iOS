@@ -42,15 +42,15 @@ struct MainView: View {
                     longitude = location.coordinate.latitude
                     nearestService.getNearest(latitude: String(latitude), longitude: String(longitude)) { result in
                         nearLocations = transformNearest(pointsAround)
-                        locations = nearLocations
-                        print("got locations")
+                        mapLocations = nearLocations
+                        print("converted to locations")
                     }
                 }
             }
         }
         .onChange(of: nearLocations) { newValue in
             if let lastLocation = newValue.last {
-                locations.append(lastLocation)
+                mapLocations.append(lastLocation)
             }
         }
         

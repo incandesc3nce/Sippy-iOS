@@ -18,9 +18,6 @@ struct Location: Codable, Equatable, Identifiable {
     var latitude: Double
     var longitude: Double
     
-    var coordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
     
     static func ==(lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id
@@ -74,7 +71,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 // ios_test
 // testtest
 
-var locations = [Location]()
+var mapLocations = [Location]()
 
 struct MapView: View {
     @StateObject private var locationManager = LocationManager()
@@ -98,7 +95,8 @@ struct MapView: View {
     @State private var editingPlace: Location?
 
     @State private var showAlert = false
-    
+
+    @State private var locations = [Location]()
     
     var body: some View {
         ZStack {
@@ -107,7 +105,7 @@ struct MapView: View {
                     initialPosition: initialPosition
                 ) {
                     ForEach(locations) { location in
-                        Annotation("", coordinate: location.coordinate) {
+                        Annotation("", coordinate: CLLocationCoordinate2D(latitude: location.longitude, longitude: location.latitude)) {
                             Image(systemName: "mappin.and.ellipse")
                                 .resizable()
                                 .foregroundColor(.red)
@@ -118,7 +116,7 @@ struct MapView: View {
                         }
                     }
                     if let tempLocation = tempLocation {
-                        Annotation(tempLocation.name, coordinate: tempLocation.coordinate) {
+                        Annotation(tempLocation.name, coordinate: CLLocationCoordinate2D(latitude: tempLocation.latitude, longitude: tempLocation.longitude)) {
                             Image(systemName: "mappin.and.ellipse")
                                 .resizable()
                                 .foregroundColor(.red)
@@ -140,19 +138,7 @@ struct MapView: View {
                         }
                     }
                 }
-                .onChange(of: locations) {
-                    ForEach(locations) { location in
-                        Annotation("", coordinate: location.coordinate) {
-                            Image(systemName: "mappin.and.ellipse")
-                                .resizable()
-                                .foregroundColor(.red)
-                                .frame(width: 44, height: 54)
-                                .onLongPressGesture {
-                                    selectedPlace = location
-                                }
-                        }
-                    }
-                }
+                
             }
             
             VStack {
@@ -226,6 +212,9 @@ struct MapView: View {
                     
                     tempLocation = nil
                 }
+            }
+            .onChange(of: mapLocations) {
+                locations = mapLocations
             }
             
         }
