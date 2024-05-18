@@ -12,15 +12,28 @@ struct ProfileView: View {
     
     @State private var bioText = ""
     @State private var name = ""
+    @State private var telegram = ""
+    @State private var gender: Int = 1
+    
+    @State private var tryingToLogOff = false
+    @State private var loggedOff = false
     
     var body: some View {
         VStack {
-            Image("Logo_v2")
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            Rectangle()
                 .frame(width: 200, height: 200)
+                .foregroundColor(Color(red: 0.008, green: 0.49, blue: 0.788))
                 .clipShape(Circle())
+                .overlay(content: {
+                    Image("Logo_v2")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 170, height: 170)
+                        .cornerRadius(55)
+                })
+            
+            
             Divider()
             Text("\(localUser.name)")
                 .font(.largeTitle)
@@ -34,7 +47,7 @@ struct ProfileView: View {
                             .font(.callout)
                             .fontWeight(.thin)
                             .multilineTextAlignment(.leading)
-                            .padding(.leading)
+                            
                     }
                     Section {
                         HStack {
@@ -44,15 +57,44 @@ struct ProfileView: View {
                         }
                         HStack {
                             Text("Telegram: ")
-                            TextField("@example", text: $name)
+                            TextField("@example", text: $telegram)
                                 .multilineTextAlignment(.trailing)
                         }
                         HStack {
                             Text("Пол: ")
-                            TextField("Мужской", text: $name)
-                                .multilineTextAlignment(.trailing)
+                            Picker("", selection: $gender) {
+                                Text("Мужской").tag(1)
+                                Text("Женский").tag(0)
+                            }
                         }
                     }
+                    Section {
+                        
+                    }
+                    Section {
+                        Button(action: {
+                            tryingToLogOff = true
+                            
+                            
+                        }) {
+                            Text("Выйти из профиля")
+                                .foregroundColor(.red)
+                        }
+                        .frame(maxWidth: .infinity)
+                        
+                        .alert(isPresented: $tryingToLogOff) {
+                            Alert(title: Text("Выход"), message: Text("Вы уверены, что хотите выйти из своей учетной записи?"), primaryButton: .destructive(Text("Да")) {
+                                loggedOff = true
+                                loggedIn = false
+                                UserDefaults.standard.set(loggedIn, forKey: "loggedIn")
+                            }, secondaryButton: .cancel(Text("Отмена")))
+                        }
+                        .fullScreenCover(isPresented: $loggedOff) {
+                            LoginView()
+                        }
+                        
+                    }
+                    
                 }
             }
             

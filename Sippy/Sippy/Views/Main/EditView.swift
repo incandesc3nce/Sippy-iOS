@@ -12,10 +12,13 @@ var didCreatePlace = false
 struct EditView: View {
     @Environment(\.dismiss) var dismiss
     
+    let pointService = APIPointService()
+    
     var location: Location
     
-    @State private var name: String
-    @State private var description: String
+    @State private var name: String = ""
+    @State private var description: String = ""
+    @State private var typeOfEvent: Int = 0
     
     var onSave: (Location) -> Void
     
@@ -23,22 +26,41 @@ struct EditView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Place name", text: $name)
-                    TextField("Description", text: $description)
+                    HStack {
+                        Text("Название:")
+                        TextField("", text: $name)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack {
+                        Text("Тип мероприятия")
+                        Picker("", selection: $typeOfEvent) {
+                            Text("Не дома").tag(0)
+                            Text("Дома").tag(1)
+                        }
+                    }
+                    HStack {
+                        Text("Описание:")
+                        TextField("", text: $description)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    
                     
                 }
                 
                 Button(action: {
                     var newLocation = location
-                    newLocation.id = UUID()
                     newLocation.name = name
                     newLocation.description = description
+                    newLocation.typeOfEvent = typeOfEvent
+                    
+                    pointService.sendLocation(newLocation)
                     
                     onSave(newLocation)
                     didCreatePlace = true
                     dismiss()
                 }) {
-                    Text("Save")
+                    Text("Создать")
                         .frame(maxWidth: .infinity)
                 }
             }

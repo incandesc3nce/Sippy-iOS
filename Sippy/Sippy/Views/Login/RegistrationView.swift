@@ -96,10 +96,11 @@ struct RegistrationView: View {
                                             switch result {
                                             case .success(let loginResponse):
                                                 if loginResponse.success {
+                                                    print("Registration success!")
                                                     if let token = loginResponse.token {
                                                         print("Login successful! Token: ")
-                                                        localUser.token = token
-                                                        print(localUser.token)
+                                                        userToken = token
+                                                        print(userToken)
                                                         
                                                         loggedIn = true
                                                         

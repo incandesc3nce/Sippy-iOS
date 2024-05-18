@@ -18,7 +18,8 @@ struct ContentView: View {
     
 
     var body: some View {
-        if let isLoggedIn = UserDefaults.standard.string(forKey: "loggedIn") {
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
+        if isLoggedIn {
             MainView()
         } else {
             LoginView()

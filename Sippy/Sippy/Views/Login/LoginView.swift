@@ -61,28 +61,9 @@ struct LoginView: View {
                             loginService.login(name: name, password: password) { result in
                                 switch result {
                                 case .success(let loginResponse):
-                                    if loginResponse.success {
-                                        if let token = loginResponse.token {
-                                            print("Login successful! Token: ")
-                                            localUser.token = token
-                                            print(localUser.token)
-                                            presentingMainView.toggle()
-                                            
-                                            loggedIn = true
-                                            
-                                            UserDefaults.standard.set(loggedIn, forKey: "loggedIn")
-                                        } else {
-                                            print("Login successful but no token received.")
-                                        }
-                                    } else {
-                                        if let message = loginResponse.message {
-                                            print("Login failed: \(message)")
-                                            incorrectInfo.toggle()
-                                        } else {
-                                            print("Login failed with no message.")
-                                            incorrectInfo.toggle()
-                                        }
-                                    }
+                                    print("Login successful! Token: ")
+                                    print(userToken)
+                                    presentingMainView.toggle()
                                 case .failure(let error):
                                     print("Error occurred during login: \(error.localizedDescription)")
                                     incorrectInfo.toggle()
