@@ -20,4 +20,7 @@ struct UserInfo {
     var token: String = ""
 }
 
+var loggedIn = false
+
+
 var localUser = UserInfo()
