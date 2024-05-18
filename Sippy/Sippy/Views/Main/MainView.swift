@@ -12,15 +12,17 @@ struct MainView: View {
         TabView {
             MapView()
             .tabItem {
-                Label("Map", systemImage: "map")
+                Label("Карта", systemImage: "map")
             }
             
             
             
             ProfileView()
             .tabItem {
-                Label("Profile", systemImage: "person.fill")
+                Label("Профиль", systemImage: "person.fill")
             }
+            
+            
         }
         
         
