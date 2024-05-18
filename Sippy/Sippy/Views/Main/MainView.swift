@@ -38,11 +38,12 @@ struct MainView: View {
         .onChange(of: locationManager.authorizationStatus) { status in
             if status == .authorizedWhenInUse || status == .authorizedAlways {
                 if let location = locationManager.location {
-                    latitude = location.coordinate.latitude
-                    longitude = location.coordinate.longitude
+                    latitude = location.coordinate.longitude
+                    longitude = location.coordinate.latitude
                     nearestService.getNearest(latitude: String(latitude), longitude: String(longitude)) { result in
                         nearLocations = transformNearest(pointsAround)
                         locations = nearLocations
+                        print("got locations")
                     }
                 }
             }

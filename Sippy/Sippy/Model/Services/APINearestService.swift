@@ -4,7 +4,7 @@ struct NearestPoint: Codable {
     let id: Int
     let chunk_id: Int
     let user_id: Int
-    let is_house: Bool
+    let category_id: String
     let created_at: String
     let updated_at: String
     let longitude: String
@@ -25,8 +25,7 @@ class APINearestService {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authentication")
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
         
         let parameters: [String: Any] = [
             "latitude": latitude,
@@ -64,7 +63,8 @@ class APINearestService {
                         let decoder = JSONDecoder()
                         let nearestPoints = try decoder.decode([NearestPoint].self, from: data)
                         pointsAround = nearestPoints
-                        print("good!")
+                        print("parsed points")
+                        completion(.success(""))
                     } catch {
                         completion(.failure(NSError(domain: "Decoding Error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode response data: \(error.localizedDescription)"])))
                     }
