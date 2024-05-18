@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PersonProfileView: View {
     
-    @State private var personName = "Mr Penis"
+    @State private var personName = "Мистер Кот"
     @State private var personAge = 20
-    @State private var personBio = "Настоящий Mr Penis"
-    @State private var personTelegram = "@mrpenis_official"
+    @State private var personBio = "Настоящий Мистер Кот"
+    @State private var personTelegram = "@mrcat_official"
     
     
     var body: some View {

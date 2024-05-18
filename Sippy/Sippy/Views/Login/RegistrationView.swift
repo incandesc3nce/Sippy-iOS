@@ -28,6 +28,8 @@ struct RegistrationView: View {
     
     let regService = APIServiceRegister()
     
+    let loginService = APIServiceLogin()
+    
     var body: some View {
         Text("Регистрация")
             .font(.largeTitle)
@@ -83,6 +85,44 @@ struct RegistrationView: View {
                                 case .success(let success):
                                     if Bool(success)! {
                                         print("Registration successful!")
+                                        
+                                        localUser.name = name
+                                        localUser.email = email
+                                        localUser.password = password
+                                        
+                                        localUser.gender = gender
+                                        localUser.age = age!
+                                        loginService.login(name: name, password: password) { result in
+                                            switch result {
+                                            case .success(let loginResponse):
+                                                if loginResponse.success {
+                                                    if let token = loginResponse.token {
+                                                        print("Login successful! Token: ")
+                                                        localUser.token = token
+                                                        print(localUser.token)
+                                                        
+                                                        loggedIn = true
+                                                        
+                                                        UserDefaults.standard.set(loggedIn, forKey: "loggedIn")
+                                                        presentingMainView.toggle()
+                                                        // You can now use the token for further API requests
+                                                    } else {
+                                                        print("Login successful but no token received.")
+                                                    }
+                                                } else {
+                                                    if let message = loginResponse.message {
+                                                        print("Login failed: \(message)")
+                                                        
+                                                    } else {
+                                                        print("Login failed with no message.")
+                                                        
+                                                    }
+                                                }
+                                            case .failure(let error):
+                                                print("Error occurred during login: \(error.localizedDescription)")
+                                                
+                                            }
+                                        }
                                         presentingMainView.toggle()
                                     }
                                 case .failure(let error):

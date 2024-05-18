@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C6CA8212BF74DE90055002E /* SippyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8202BF74DE90055002E /* SippyApp.swift */; };
 		2C6CA8232BF74DE90055002E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8222BF74DE90055002E /* ContentView.swift */; };
-		2C6CA8252BF74DE90055002E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8242BF74DE90055002E /* Item.swift */; };
 		2C6CA8272BF74DEB0055002E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CA8262BF74DEB0055002E /* Assets.xcassets */; };
 		2C6CA82A2BF74DEB0055002E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CA8292BF74DEB0055002E /* Preview Assets.xcassets */; };
 		2C6CA8312BF74EEA0055002E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8302BF74EEA0055002E /* MapView.swift */; };
@@ -22,13 +20,14 @@
 		2CA7C0E82BF7983C001D70D3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0E72BF7983C001D70D3 /* LoginView.swift */; };
 		2CA7C0EB2BF79F4E001D70D3 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */; };
 		2CFD99962BF7B3B000BC4F63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */; };
+		2CFD999A2BF7EC9300BC4F63 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD99992BF7EC9300BC4F63 /* UserInfo.swift */; };
+		2CFD999C2BF8311200BC4F63 /* SippyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD999B2BF8311200BC4F63 /* SippyApp.swift */; };
+		2CFD999E2BF8477200BC4F63 /* PersonProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD999D2BF8477200BC4F63 /* PersonProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C6CA81D2BF74DE90055002E /* Sippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sippy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6CA8202BF74DE90055002E /* SippyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SippyApp.swift; sourceTree = "<group>"; };
 		2C6CA8222BF74DE90055002E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2C6CA8242BF74DE90055002E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2C6CA8262BF74DEB0055002E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C6CA8292BF74DEB0055002E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2C6CA8302BF74EEA0055002E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -42,6 +41,9 @@
 		2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2CFD99972BF7C89E00BC4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2CFD99992BF7EC9300BC4F63 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		2CFD999B2BF8311200BC4F63 /* SippyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SippyApp.swift; sourceTree = "<group>"; };
+		2CFD999D2BF8477200BC4F63 /* PersonProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +80,9 @@
 				2C6CA8402BF752A00055002E /* SplashScreen */,
 				2C6CA8352BF74FC30055002E /* Model */,
 				2C6CA8322BF74F1E0055002E /* Views */,
-				2C6CA8242BF74DE90055002E /* Item.swift */,
-				2C6CA8202BF74DE90055002E /* SippyApp.swift */,
 				2C6CA8262BF74DEB0055002E /* Assets.xcassets */,
 				2C6CA8282BF74DEB0055002E /* Preview Content */,
+				2CFD999B2BF8311200BC4F63 /* SippyApp.swift */,
 			);
 			path = Sippy;
 			sourceTree = "<group>";
@@ -107,6 +108,7 @@
 		2C6CA8352BF74FC30055002E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CFD99982BF7EC7E00BC4F63 /* UserInfo */,
 				2C6CA83B2BF751190055002E /* Services */,
 				2C6CA8382BF7502B0055002E /* Extensions */,
 			);
@@ -154,8 +156,17 @@
 				2C6CA8362BF74FF20055002E /* ProfileView.swift */,
 				2C6CA8302BF74EEA0055002E /* MapView.swift */,
 				2C6CA8332BF74FB10055002E /* EditView.swift */,
+				2CFD999D2BF8477200BC4F63 /* PersonProfileView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		2CFD99982BF7EC7E00BC4F63 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2CFD99992BF7EC9300BC4F63 /* UserInfo.swift */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,12 +246,13 @@
 				2CA7C0EB2BF79F4E001D70D3 /* RegistrationView.swift in Sources */,
 				2C6CA8342BF74FB10055002E /* EditView.swift in Sources */,
 				2CA7C0E52BF7974C001D70D3 /* MainView.swift in Sources */,
+				2CFD999E2BF8477200BC4F63 /* PersonProfileView.swift in Sources */,
 				2C6CA8312BF74EEA0055002E /* MapView.swift in Sources */,
-				2C6CA8252BF74DE90055002E /* Item.swift in Sources */,
+				2CFD999C2BF8311200BC4F63 /* SippyApp.swift in Sources */,
+				2CFD999A2BF7EC9300BC4F63 /* UserInfo.swift in Sources */,
 				2C6CA8372BF74FF20055002E /* ProfileView.swift in Sources */,
 				2C6CA83D2BF751400055002E /* APIService.swift in Sources */,
 				2C6CA83F2BF751480055002E /* WebSocketService.swift in Sources */,
-				2C6CA8212BF74DE90055002E /* SippyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +402,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Sippy-Team.Sippy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -426,6 +439,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Sippy-Team.Sippy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
