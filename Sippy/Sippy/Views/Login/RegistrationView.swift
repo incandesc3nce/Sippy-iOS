@@ -94,7 +94,7 @@ struct RegistrationView: View {
                                         localUser.gender = gender
                                         localUser.age = age!
                                         
-                                        loginService.login(name: name, password: password) { result in
+                                        loginService.login(email: email, password: password) { result in
                                             switch result {
                                             case .success(let loginResponse):
                                                 if loginResponse.success {

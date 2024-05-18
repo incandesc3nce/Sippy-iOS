@@ -16,9 +16,10 @@ struct ContentView: View {
     
     //@ObservedObject var websocket = WebsocketService()
     
-
+    
     var body: some View {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "loggedIn")
+        
         if isLoggedIn {
             MainView()
         } else {
