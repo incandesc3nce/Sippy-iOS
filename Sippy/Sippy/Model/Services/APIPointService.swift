@@ -26,16 +26,16 @@ class APIPointService {
         // Create a URLRequest
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let value = "Bearer \(userToken)"
+        let token = "Bearer \(userToken)"
         // change later lol
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(value, forHTTPHeaderField: "Authorization")
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         let parameters: [String: Any] = [
             "latitude": String(location.latitude),
             "longitude": String(location.longitude),
-            "is_house": String(location.typeOfEvent)
+            "category_id": String(location.category)
         ]
         
         print(parameters)

@@ -132,8 +132,11 @@ class APIServiceLogin {
             
 
             if let decodedString = String(data: data, encoding: .utf8) {
-                userToken = decodedString
-                UserDefaults.standard.setValue(decodedString, forKey: "token")
+                let stringWithoutQuotes = decodedString.replacingOccurrences(of: "\"", with: "")
+                let stringWithoutBackslashes = stringWithoutQuotes.replacingOccurrences(of: "\\", with: "")
+                let finalString = stringWithoutBackslashes.replacingOccurrences(of: "/", with: "")
+                userToken = finalString
+                UserDefaults.standard.setValue(finalString, forKey: "token")
                 let loginResponse = LoginResponse(success: true, token: userToken, message: nil)
                 completion(.success(loginResponse))
             } else {

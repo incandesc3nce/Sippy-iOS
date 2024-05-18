@@ -18,7 +18,7 @@ struct EditView: View {
     
     @State private var name: String = ""
     @State private var description: String = ""
-    @State private var typeOfEvent: Int = 0
+    @State private var category: String = ""
     
     var onSave: (Location) -> Void
     
@@ -33,9 +33,11 @@ struct EditView: View {
                     }
                     HStack {
                         Text("Тип мероприятия")
-                        Picker("", selection: $typeOfEvent) {
-                            Text("Не дома").tag(0)
-                            Text("Дома").tag(1)
+                        Picker("pubs", selection: $category) {
+                            Text("Пабы").tag("pubs")
+                            Text("Дома").tag("at_home")
+                            Text("Кино").tag("cinema")
+                            Text("Сабантуй").tag("sabantui")
                         }
                     }
                     HStack {
@@ -52,7 +54,7 @@ struct EditView: View {
                     var newLocation = location
                     newLocation.name = name
                     newLocation.description = description
-                    newLocation.typeOfEvent = typeOfEvent
+                    newLocation.category = category
                     
                     pointService.sendLocation(newLocation)
                     
