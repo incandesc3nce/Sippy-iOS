@@ -128,7 +128,7 @@ struct MapView: View {
                 }
                 .onTapGesture { position in
                     if let coordinate = proxy.convert(position, from: .local) {
-                    
+                        
                         tempLocation = Location(id: UUID(), name: "", description: "", category: "pubs", latitude: coordinate.latitude, longitude: coordinate.longitude)
                         isCreatingPlace = true
                     }
@@ -137,6 +137,19 @@ struct MapView: View {
                     EditView(location: place) { newLocation in
                         if let index = locations.firstIndex(of: place) {
                             locations[index] = newLocation
+                        }
+                    }
+                }
+                .onChange(of: locations) {
+                    ForEach(locations) { location in
+                        Annotation("", coordinate: location.coordinate) {
+                            Image(systemName: "mappin.and.ellipse")
+                                .resizable()
+                                .foregroundColor(.red)
+                                .frame(width: 44, height: 54)
+                                .onLongPressGesture {
+                                    selectedPlace = location
+                                }
                         }
                     }
                 }
@@ -218,6 +231,7 @@ struct MapView: View {
         }
         
     }
+        
 }
 
 #Preview {
