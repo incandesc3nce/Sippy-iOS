@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     
     @State var loginService = APIServiceLogin()
-    @State var userToken: String = ""
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -65,10 +64,13 @@ struct LoginView: View {
                                     if loginResponse.success {
                                         if let token = loginResponse.token {
                                             print("Login successful! Token: ")
-                                            userToken = token
-                                            print(userToken)
+                                            localUser.token = token
+                                            print(localUser.token)
                                             presentingMainView.toggle()
-                                            // You can now use the token for further API requests
+                                            
+                                            loggedIn = true
+                                            
+                                            UserDefaults.standard.set(loggedIn, forKey: "loggedIn")
                                         } else {
                                             print("Login successful but no token received.")
                                         }
