@@ -8,12 +8,14 @@
 import Foundation
 
 struct UserInfo {
-    var name: String = ""
+    var name: String = "Иван"
     var password: String = ""
     var email: String = ""
     
     var gender: Int = 0
     var age: Int = 0
+    
+    var bio: String = ""
     
     var token: String = ""
 }
