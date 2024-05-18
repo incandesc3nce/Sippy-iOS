@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+// MARK: BUG, issue 1
 
 struct RegistrationView: View {
     @State private var name = ""
@@ -92,6 +93,7 @@ struct RegistrationView: View {
                                         
                                         localUser.gender = gender
                                         localUser.age = age!
+                                        
                                         loginService.login(name: name, password: password) { result in
                                             switch result {
                                             case .success(let loginResponse):
@@ -105,7 +107,9 @@ struct RegistrationView: View {
                                                         loggedIn = true
                                                         
                                                         UserDefaults.standard.set(loggedIn, forKey: "loggedIn")
-                                                        presentingMainView.toggle()
+                                                        DispatchQueue.main.async {
+                                                            presentingMainView.toggle()
+                                                        }
                                                         // You can now use the token for further API requests
                                                     } else {
                                                         print("Login successful but no token received.")
@@ -124,7 +128,6 @@ struct RegistrationView: View {
                                                 
                                             }
                                         }
-                                        presentingMainView.toggle()
                                     }
                                 case .failure(let error):
                                     print("Registration failed: \(error.localizedDescription)")
