@@ -21,6 +21,10 @@ struct UserInfo {
 }
 
 var loggedIn = false
-var userToken: String = ""
+var userToken: String = UserDefaults.standard.string(forKey: "token") ?? ""
 
 var localUser = UserInfo()
+
+var pointsAround: [NearestPoint] = []
+
+var nearLocations: [Location] = []

@@ -20,6 +20,8 @@
 		2CA7C0E82BF7983C001D70D3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0E72BF7983C001D70D3 /* LoginView.swift */; };
 		2CA7C0EB2BF79F4E001D70D3 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */; };
 		2CB230232BF86A2A00FCC60E /* APIPointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB230222BF86A2A00FCC60E /* APIPointService.swift */; };
+		2CB230252BF8CD5600FCC60E /* APINearestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB230242BF8CD5600FCC60E /* APINearestService.swift */; };
+		2CB230272BF91B6D00FCC60E /* TransformNearest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB230262BF91B6D00FCC60E /* TransformNearest.swift */; };
 		2CFD99962BF7B3B000BC4F63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */; };
 		2CFD999A2BF7EC9300BC4F63 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD99992BF7EC9300BC4F63 /* UserInfo.swift */; };
 		2CFD999C2BF8311200BC4F63 /* SippyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFD999B2BF8311200BC4F63 /* SippyApp.swift */; };
@@ -41,6 +43,8 @@
 		2CA7C0E72BF7983C001D70D3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2CA7C0EA2BF79F4E001D70D3 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2CB230222BF86A2A00FCC60E /* APIPointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPointService.swift; sourceTree = "<group>"; };
+		2CB230242BF8CD5600FCC60E /* APINearestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINearestService.swift; sourceTree = "<group>"; };
+		2CB230262BF91B6D00FCC60E /* TransformNearest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformNearest.swift; sourceTree = "<group>"; };
 		2CFD99952BF7B3B000BC4F63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2CFD99972BF7C89E00BC4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2CFD99992BF7EC9300BC4F63 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				2CFD99982BF7EC7E00BC4F63 /* UserInfo */,
 				2C6CA83B2BF751190055002E /* Services */,
 				2C6CA8382BF7502B0055002E /* Extensions */,
+				2CB230262BF91B6D00FCC60E /* TransformNearest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				2C6CA83C2BF751400055002E /* APIService.swift */,
 				2C6CA83E2BF751480055002E /* WebSocketService.swift */,
 				2CB230222BF86A2A00FCC60E /* APIPointService.swift */,
+				2CB230242BF8CD5600FCC60E /* APINearestService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 				2C6CA8372BF74FF20055002E /* ProfileView.swift in Sources */,
 				2C6CA83D2BF751400055002E /* APIService.swift in Sources */,
 				2C6CA83F2BF751480055002E /* WebSocketService.swift in Sources */,
+				2CB230252BF8CD5600FCC60E /* APINearestService.swift in Sources */,
 				2CB230232BF86A2A00FCC60E /* APIPointService.swift in Sources */,
+				2CB230272BF91B6D00FCC60E /* TransformNearest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,11 +404,14 @@
 				INFOPLIST_FILE = Sippy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Нам нужна ваша геолокация для получения мероприятий поблизости.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,11 +444,14 @@
 				INFOPLIST_FILE = Sippy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sippy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Нам нужна ваша геолокация для получения мероприятий поблизости.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -27,14 +27,61 @@ struct Location: Codable, Equatable, Identifiable {
     }
 }
 
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private var locationManager = CLLocationManager()
+
+    @Published var location: CLLocation?
+    @Published var authorizationStatus: CLAuthorizationStatus?
+
+    override init() {
+        super.init()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        self.location = location
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        self.authorizationStatus = status
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            self.locationManager.startUpdatingLocation()
+        } else {
+            self.locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func getLatitude() -> Double {
+        return location?.coordinate.longitude ?? 83.7698
+    }
+    
+    func getLongitude() -> Double {
+        return location?.coordinate.latitude ?? 53.3600
+    }
+    
+    func requestLocationAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+}
+
+
+
 // token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.FmlgL5f2FlT2ty8hRdQgxmJD6vG2gspgbTHLS_ecZTY
 // ios_test
 // testtest
 
+var locations = [Location]()
 
 struct MapView: View {
+    @StateObject private var locationManager = LocationManager()
+    let nearestService = APINearestService()
     
-    @State private var userLocation = CLLocationCoordinate2D()
+    @State private var latitude: Double = 0
+    @State private var longitude: Double = 0
     
     @State private var initialPosition = MapCameraPosition.region(
         MKCoordinateRegion(
@@ -44,7 +91,6 @@ struct MapView: View {
     )
     
     
-    @State private var locations = [Location]()
     @State private var selectedPlace: Location?
     @State private var tempLocation: Location?
 
@@ -56,7 +102,6 @@ struct MapView: View {
     
     var body: some View {
         ZStack {
-            
             MapReader { proxy in
                 Map(
                     initialPosition: initialPosition
@@ -171,6 +216,7 @@ struct MapView: View {
             }
             
         }
+        
     }
 }
 

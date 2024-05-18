@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 struct LoginView: View {
     
     @State var loginService = APIServiceLogin()
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var name = ""
+    @State private var email = ""
     @State private var password = ""
     
     @State private var notEnoughInfo = false
@@ -34,8 +35,8 @@ struct LoginView: View {
                 Section() {
                     Form {
                         HStack {
-                            Text("Никнейм: ")
-                            TextField("example", text: $name)
+                            Text("Email: ")
+                            TextField("example", text: $email)
                                 .keyboardType(.emailAddress)
                                 .multilineTextAlignment(.trailing)
                         }
@@ -54,15 +55,17 @@ struct LoginView: View {
                 
                 VStack {
                     Button("Войти") {
-                        if name.isEmpty || password.isEmpty {
+                        if email.isEmpty || password.isEmpty {
                             notEnoughInfo = true
                             
                         } else {
-                            loginService.login(name: name, password: password) { result in
+                            loginService.login(email: email, password: password) { result in
                                 switch result {
                                 case .success(let loginResponse):
                                     print("Login successful! Token: ")
                                     print(userToken)
+                                    
+                                    UserDefaults.standard.setValue(true, forKey: "loggedIn")
                                     presentingMainView.toggle()
                                 case .failure(let error):
                                     print("Error occurred during login: \(error.localizedDescription)")

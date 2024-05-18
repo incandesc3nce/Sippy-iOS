@@ -26,7 +26,8 @@ class APIPointService {
         // Create a URLRequest
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let value = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNn0.jhdskFd2oOv6eEspJC2iv0e5lfxbCy2StkWoFViNSiA"
+        let value = "Bearer \(userToken)"
+        // change later lol
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(value, forHTTPHeaderField: "Authorization")

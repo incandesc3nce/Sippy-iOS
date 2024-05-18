@@ -64,7 +64,7 @@ struct EditView: View {
                         .frame(maxWidth: .infinity)
                 }
             }
-            .navigationTitle("Place Details")
+            .navigationTitle("Детали мероприятия")
         }
         .background(Color(hex: 0x057DC8))
     }

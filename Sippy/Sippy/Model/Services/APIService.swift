@@ -76,7 +76,7 @@ struct LoginResponse: Codable {
 class APIServiceLogin {
     
     // The login function takes name and password, sends a POST request, and returns the decoded response.
-    func login(name: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
         // Ensure the URL is valid.
         guard let url = URL(string: "http://79.174.80.34:8081/api/login/") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
@@ -90,7 +90,7 @@ class APIServiceLogin {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         // Create the JSON payload.
-        let loginData = ["name": name, "password": password]
+        let loginData = ["email": email, "password": password]
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: loginData, options: [])
@@ -133,7 +133,7 @@ class APIServiceLogin {
 
             if let decodedString = String(data: data, encoding: .utf8) {
                 userToken = decodedString
-                print(decodedString)
+                UserDefaults.standard.setValue(decodedString, forKey: "token")
                 let loginResponse = LoginResponse(success: true, token: userToken, message: nil)
                 completion(.success(loginResponse))
             } else {
