@@ -14,6 +14,7 @@ struct EditView: View {
     
     let pointService = APIPointService()
     
+    @Binding var tempLocation: Location?
     var location: Location
     
     @State private var name: String = ""
@@ -23,7 +24,7 @@ struct EditView: View {
     var onSave: (Location) -> Void
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             Form {
                 Section {
                     HStack {
@@ -67,13 +68,24 @@ struct EditView: View {
                 }
             }
             .navigationTitle("Детали мероприятия")
+            .navigationBarItems(trailing: Button("Отмена") {
+                tempLocation = nil
+                dismiss()
+            })
         }
         .background(Color(hex: 0x057DC8))
+        .onDisappear(perform: {
+            if didCreatePlace == false {
+                tempLocation = nil
+            }
+        }
+        )
     }
     
-    init(location: Location, onSave: @escaping (Location) -> Void) {
+    init(location: Location, tempLocation: Binding<Location?>, onSave: @escaping (Location) -> Void) {
         self.location = location
         self.onSave = onSave
+        self._tempLocation = tempLocation
         
         _name = State(initialValue: location.name)
         _description = State(initialValue: location.description)

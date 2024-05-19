@@ -132,7 +132,7 @@ struct MapView: View {
                     }
                 }
                 .sheet(item: $selectedPlace) { place in
-                    EditView(location: place) { newLocation in
+                    EditView(location: place, tempLocation: $tempLocation) { newLocation in
                         if let index = locations.firstIndex(of: place) {
                             locations[index] = newLocation
                         }
@@ -205,7 +205,7 @@ struct MapView: View {
             }
             
             .sheet(item: $editingPlace) { place in
-                EditView(location: place) { newLocation in
+                EditView(location: place, tempLocation: $tempLocation) { newLocation in
                     if let index = locations.firstIndex(of: place) {
                         locations[index] = newLocation
                     }
