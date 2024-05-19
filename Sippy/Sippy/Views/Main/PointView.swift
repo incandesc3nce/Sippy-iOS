@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct PointView: View {
+    @Environment(\.dismiss) var dismiss
+    @Binding var tempLocation: Location?
+    var location: Location
+    
+    @State private var name: String = ""
+    @State private var description: String = ""
+    @State private var category: String = ""
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -85,8 +93,13 @@ struct PointView: View {
             
         }
     }
+    
+    init(location: Location, tempLocation: Binding<Location?>) {
+        self.location = location
+        self._tempLocation = tempLocation
+        
+        _name = State(initialValue: location.name)
+        _description = State(initialValue: location.description)
+    }
 }
 
-#Preview {
-    PointView()
-}

@@ -110,7 +110,7 @@ struct MapView: View {
                                 .resizable()
                                 .foregroundColor(.red)
                                 .frame(width: 44, height: 54)
-                                .onLongPressGesture {
+                                .onLongPressGesture(minimumDuration: 0.01) {
                                     selectedPlace = location
                                 }
                         }
@@ -132,11 +132,7 @@ struct MapView: View {
                     }
                 }
                 .sheet(item: $selectedPlace) { place in
-                    EditView(location: place, tempLocation: $tempLocation) { newLocation in
-                        if let index = locations.firstIndex(of: place) {
-                            locations[index] = newLocation
-                        }
-                    }
+                    PointView(location: place, tempLocation: $tempLocation)
                 }
                 
             }
