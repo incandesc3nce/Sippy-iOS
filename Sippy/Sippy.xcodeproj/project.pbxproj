@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C027C5A2BF9974000D21F0A /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C027C592BF9974000D21F0A /* PointView.swift */; };
 		2C6CA8232BF74DE90055002E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8222BF74DE90055002E /* ContentView.swift */; };
 		2C6CA8272BF74DEB0055002E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CA8262BF74DEB0055002E /* Assets.xcassets */; };
 		2C6CA82A2BF74DEB0055002E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CA8292BF74DEB0055002E /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C027C592BF9974000D21F0A /* PointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 		2C6CA81D2BF74DE90055002E /* Sippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sippy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6CA8222BF74DE90055002E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C6CA8262BF74DEB0055002E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				2C6CA8302BF74EEA0055002E /* MapView.swift */,
 				2C6CA8332BF74FB10055002E /* EditView.swift */,
 				2CFD999D2BF8477200BC4F63 /* PersonProfileView.swift */,
+				2C027C592BF9974000D21F0A /* PointView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				2C6CA8312BF74EEA0055002E /* MapView.swift in Sources */,
 				2CFD999C2BF8311200BC4F63 /* SippyApp.swift in Sources */,
 				2CFD999A2BF7EC9300BC4F63 /* UserInfo.swift in Sources */,
+				2C027C5A2BF9974000D21F0A /* PointView.swift in Sources */,
 				2C6CA8372BF74FF20055002E /* ProfileView.swift in Sources */,
 				2C6CA83D2BF751400055002E /* APIService.swift in Sources */,
 				2C6CA83F2BF751480055002E /* WebSocketService.swift in Sources */,
