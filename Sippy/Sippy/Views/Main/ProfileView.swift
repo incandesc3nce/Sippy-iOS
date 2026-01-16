@@ -10,83 +10,55 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @State private var bioText = ""
+    @State private var name = ""
     
     var body: some View {
         VStack {
             Image("Logo_v2")
+                .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
-            Rectangle()
-                .fill(Color.gray)
-                .frame(maxHeight: 3)
-            Text("Иван")
+            Divider()
+            Text("\(localUser.name)")
                 .font(.largeTitle)
             
-            HStack {
-                Rectangle()
-                    .stroke(Color.gray, lineWidth: 3)
-                    .cornerRadius(3)
-                    .frame(width: 350, height: 160)
-                    .overlay(
-                        VStack {
-                            Text("Параметры")
-                                .font(.title)
-                                .foregroundColor(.black)
-                                .padding(.vertical)
-                            HStack {
-                                Text("Lorem ipsum")
-                                    .padding(.horizontal)
-                                Spacer()
-                            }
-                            HStack {
-                                Text("Lorem ipsum")
-                                    .padding(.horizontal)
-                                Spacer()
-                            }
-                            HStack {
-                                Text("Lorem ipsum")
-                                    .padding(.horizontal)
-                                Spacer()
-                            }
-                            HStack {
-                                Text("Lorem ipsum")
-                                    .padding(.horizontal)
-                                Spacer()
-                            }
-                            
-                            Spacer()
+            VStack {
+                Form {
+                    Section("О себе") {
+                        TextField("24 года, программист из Барнаула", text: $bioText)
+                            .multilineTextAlignment(.leading)
+                        Text("Можно указать любые подробности")
+                            .font(.callout)
+                            .fontWeight(.thin)
+                            .multilineTextAlignment(.leading)
+                            .padding(.leading)
+                    }
+                    Section {
+                        HStack {
+                            Text("Имя: ")
+                            TextField("example", text: $name)
+                                .multilineTextAlignment(.trailing)
                         }
-                        
-                    )
+                        HStack {
+                            Text("Telegram: ")
+                            TextField("@example", text: $name)
+                                .multilineTextAlignment(.trailing)
+                        }
+                        HStack {
+                            Text("Пол: ")
+                            TextField("Мужской", text: $name)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                }
             }
             
-            HStack {
-                Rectangle()
-                    .stroke(Color.gray, lineWidth: 3)
-                    .cornerRadius(3)
-                    .frame(width: 350, height: 250)
-                    .overlay(
-                        VStack {
-                            Text("О себе")
-                                .font(.title)
-                                .foregroundColor(.black)
-                                .padding(.vertical)
-                            HStack {
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
-                                    .padding(.horizontal)
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                        }
-                        
-                    )
-            }
             
         }
-        Spacer()
+        
     }
 }
 
